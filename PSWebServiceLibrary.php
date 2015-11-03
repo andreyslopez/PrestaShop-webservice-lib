@@ -104,6 +104,9 @@ class PrestaShopWebservice
 	 */
 	protected function executeRequest($url, $curl_params = array())
 	{
+        $pos = strpos($url, '?');
+        $url .= (($pos === false) ? '?' : '&').'ws_key='.$this->key;
+
 		$defaultParams = array(
 			CURLOPT_HEADER => TRUE,
 			CURLOPT_RETURNTRANSFER => TRUE,
